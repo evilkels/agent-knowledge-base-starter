@@ -276,7 +276,7 @@ describe('command line', () => {
     const result = spawnSync('node', [LINT_SCRIPT, '--root', root, '--today', TODAY], { encoding: 'utf8' });
     assert.equal(result.status, 1);
     assert.match(result.stdout, /^ERROR wiki\/projects\/a\.md: link target "gone\.md" does not exist$/m);
-    assert.match(result.stdout, /^lint: 1 errors, 0 warnings\n$/m);
+    assert.match(result.stdout, /^lint: 1 error, 0 warnings\n$/m);
   });
 
   test('exit code 0 on a clean vault', () => {
