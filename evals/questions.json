@@ -1,0 +1,42 @@
+[
+  {
+    "id": "q1",
+    "question": "What discount can a salesperson give without the owner's approval?",
+    "expect_sources": [
+      "wiki/resources/pricing-arguments.md",
+      "sources/2026-10-09-pricing-email.md"
+    ],
+    "notes": "Correct answer: up to 5 %. Anything above needs the owner's signature."
+  },
+  {
+    "id": "q2",
+    "question": "When does the Northern Build pilot start, and how long does it run?",
+    "expect_sources": [
+      "wiki/projects/northern-build-pilot.md",
+      "sources/2026-10-02-call-northern-build.md"
+    ],
+    "notes": "Correct answer: it starts on 2026-10-12 and runs six weeks."
+  },
+  {
+    "id": "q3",
+    "question": "Who reviews changes to the wiki during the pilot?",
+    "expect_sources": [
+      "wiki/projects/northern-build-pilot.md"
+    ],
+    "notes": "Correct answer: the sales lead reviews every change."
+  },
+  {
+    "id": "q4",
+    "question": "What is the pilot budget?",
+    "expect_sources": [
+      "inbox/2026-10-10-northern-build-budget.md"
+    ],
+    "notes": "The wiki does not state a budget. A proposal in inbox/ suggests a cap but is not applied. A good answer says the wiki has no approved budget, names the pending proposal and does not present it as fact."
+  },
+  {
+    "id": "q5",
+    "question": "Which supplier does Northern Build use for windows?",
+    "expect_sources": [],
+    "notes": "Correct answer: not in the vault. No page or source names a supplier. A good answer says so and cites nothing."
+  }
+]
