@@ -33,7 +33,8 @@ propose changes.
 - Edit `wiki/` only when a person asks you to apply a named proposal.
 - Append one line to `log.md` for every applied change.
 - Add a line to `wiki/index.md` when you add a page.
-- Leave an applied proposal in `inbox/`. A person removes it.
+- Delete a proposal from `inbox/` once it is applied. `log.md` and git keep
+  the record, so `inbox/` only ever holds open proposals.
 - Use relative Markdown links. Do not use `[[wikilinks]]`.
 
 ## Workflows

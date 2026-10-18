@@ -233,7 +233,7 @@ export function lint({ root, today }) {
   const lines = [
     ...messages.map((m) => `${m.level} ${m.file}: ${m.message}`),
     ...notes,
-    `lint: ${errors} errors, ${warnings} warnings`,
+    `lint: ${errors} ${errors === 1 ? 'error' : 'errors'}, ${warnings} ${warnings === 1 ? 'warning' : 'warnings'}`,
   ];
   return { errors, warnings, lines };
 }

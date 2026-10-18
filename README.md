@@ -68,7 +68,7 @@ npm run lint -- --today 2026-10-18
 2. **Approve:** a person reads the proposal and asks the agent to apply it by
    name.
 3. **Apply:** the agent edits `wiki/`, updates `wiki/index.md` if a page was
-   added, and appends a line to `log.md`.
+   added, appends a line to `log.md` and deletes the applied proposal.
 4. **Query:** the agent starts at `wiki/index.md`, follows links, checks
    `sources/`, and answers with file paths.
 5. **Lint:** run `npm run lint`. Fix every ERROR. Read every WARN.
@@ -91,7 +91,7 @@ Example output (the sample vault with a deliberate mistake):
 
 ```text
 ERROR wiki/areas/sales.md: link target "../resources/pricing.md" does not exist
-lint: 1 errors, 0 warnings
+lint: 1 error, 0 warnings
 ```
 
 The fields are described in [schema.md](schema.md).
