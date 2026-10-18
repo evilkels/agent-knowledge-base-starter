@@ -1,0 +1,21 @@
+{
+  "name": "agent-knowledge-base-starter",
+  "version": "0.1.0",
+  "description": "A small Markdown knowledge base for AI agents: sources, wiki, rules, lint and an answer check. The sample content is invented.",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "author": "Elvijs Ernests Viļķels",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evilkels/agent-knowledge-base-starter.git"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "lint": "node scripts/lint.mjs",
+    "check-answer": "node scripts/check-answer.mjs",
+    "test": "node --test test/lint.test.mjs"
+  }
+}
