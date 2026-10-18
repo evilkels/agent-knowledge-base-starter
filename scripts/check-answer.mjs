@@ -22,6 +22,21 @@ export function compare(expected, cited) {
   };
 }
 
+// A question with no expected sources is one the vault cannot answer: the answer
+// must say "not in the vault" and must not cite wiki pages or sources as evidence.
+export function verdict(question, text, cited, missing) {
+  if (missing.length > 0) {
+    return `${missing.length} expected ${missing.length === 1 ? 'source' : 'sources'} missing`;
+  }
+  if (question.expect_sources.length === 0) {
+    if (!/not in the vault/i.test(text)) return 'answer does not say "not in the vault"';
+    if (cited.some((file) => file.startsWith('wiki/') || file.startsWith('sources/'))) {
+      return 'answer cites vault pages for a question the vault cannot answer';
+    }
+  }
+  return null;
+}
+
 function section(name, files) {
   return [`${name} (${files.length}):`, ...files.map((file) => `  ${file}`)];
 }
@@ -40,8 +55,10 @@ function main() {
     process.exit(2);
   }
 
-  const cited = citedPaths(readFileSync(answerFile, 'utf8'));
+  const text = readFileSync(answerFile, 'utf8');
+  const cited = citedPaths(text);
   const { missing, extra } = compare(question.expect_sources, cited);
+  const failure = verdict(question, text, cited, missing);
 
   const lines = [
     `question ${question.id}: ${question.question}`,
@@ -49,12 +66,10 @@ function main() {
     ...section('cited', cited),
     ...section('missing', missing),
     ...section('extra', extra),
-    missing.length === 0
-      ? 'check-answer: pass'
-      : `check-answer: fail (${missing.length} expected ${missing.length === 1 ? 'source' : 'sources'} missing)`,
+    failure ? `check-answer: fail (${failure})` : 'check-answer: pass',
   ];
   console.log(lines.join('\n'));
-  process.exit(missing.length === 0 ? 0 : 1);
+  process.exit(failure ? 1 : 0);
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main();

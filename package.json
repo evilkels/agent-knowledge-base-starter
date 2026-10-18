@@ -16,6 +16,6 @@
   "scripts": {
     "lint": "node scripts/lint.mjs",
     "check-answer": "node scripts/check-answer.mjs",
-    "test": "node --test test/lint.test.mjs"
+    "test": "node --test test/lint.test.mjs test/check-answer.test.mjs"
   }
 }

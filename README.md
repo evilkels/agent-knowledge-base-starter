@@ -15,6 +15,8 @@ company. The people, figures and e-mails do not exist.
 agent-knowledge-base-starter/
 ├── AGENTS.md          rules every agent follows here
 ├── CLAUDE.md          one line: @AGENTS.md (Claude Code import)
+├── .claude/
+│   └── settings.json  Claude Code: never edit sources/, ask before wiki/ edits
 ├── README.md
 ├── LICENSE
 ├── package.json       scripts: lint, check-answer, test
@@ -35,7 +37,8 @@ agent-knowledge-base-starter/
 │   ├── lint.mjs
 │   └── check-answer.mjs
 └── test/
-    └── lint.test.mjs
+    ├── lint.test.mjs
+    └── check-answer.test.mjs
 ```
 
 ## Quick start
@@ -104,12 +107,34 @@ npm run check-answer -- q1 evals/answers/example-q1.md
 
 The script reads `evals/questions.json`, finds the file paths the answer cites,
 and prints `cited`, `missing` and `extra`. It exits with 1 when an expected
-source is missing. A question with no expected sources, such as `q5`, expects
-the answer "not in the vault". The script checks citations only. A person still
+source is missing. A question with no expected sources, such as `q5`, passes
+only when the answer says "not in the vault" and cites no wiki page or source.
+The script checks citations only. A person still
 judges whether the content of the answer is right.
 
 To test an agent: ask it each question, save the answer, run the script, and
 record the model and the date.
+
+## Claude Code permissions
+
+`.claude/settings.json` turns two rules from `AGENTS.md` into permissions for
+Claude Code's built-in file tools:
+
+```json
+{
+  "permissions": {
+    "deny": ["Edit(/sources/**)"],
+    "ask": ["Edit(/wiki/**)"]
+  }
+}
+```
+
+Claude Code refuses edits in `sources/` and asks before every edit in `wiki/`,
+even in modes that accept edits automatically. These rules cover the built-in
+tools only: a shell command or an MCP server can still write files, and lint
+only notices changes after they happen. For a hard boundary, give the agent a
+read-only copy or run it where it cannot write. Rules and their limits:
+https://code.claude.com/docs/en/permissions
 
 ## Links in Obsidian
 
