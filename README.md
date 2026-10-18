@@ -109,7 +109,7 @@ The script reads `evals/questions.json`, finds the file paths the answer cites,
 and prints `cited`, `missing` and `extra`. It exits with 1 when an expected
 source is missing. A question with no expected sources, such as `q5`, passes
 only when the answer says "not in the vault" and cites no wiki page or source.
-The script checks citations only. A person still
+The script checks cited paths and that phrase, nothing else. A person still
 judges whether the content of the answer is right.
 
 To test an agent: ask it each question, save the answer, run the script, and

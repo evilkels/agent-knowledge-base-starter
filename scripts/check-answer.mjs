@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Checks which files an answer cites. Usage: node scripts/check-answer.mjs <question-id> <answer-file>
-// It compares citations only. A person still judges whether the answer is right.
+// It compares cited paths (and, for a question with no expected sources, the phrase "not in the vault").
+// A person still judges whether the answer is right.
 
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
