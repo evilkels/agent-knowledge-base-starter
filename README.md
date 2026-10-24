@@ -14,7 +14,6 @@ company. The people, figures and e-mails do not exist.
 ```
 agent-knowledge-base-starter/
 ├── AGENTS.md          rules every agent follows here
-├── CLAUDE.md          one line: @AGENTS.md (Claude Code import)
 ├── .claude/
 │   └── settings.json  Claude Code: never edit sources/, ask before wiki/ edits
 ├── README.md
@@ -50,8 +49,8 @@ npm run lint
 ```
 
 1. Open the folder as a vault in Obsidian (optional; any editor works).
-2. Start an agent in the folder. Claude Code reads `CLAUDE.md`, which imports
-   `AGENTS.md`. Codex reads `AGENTS.md` directly.
+2. Start an agent in the folder. Claude Code, Codex and OpenCode all read
+   `AGENTS.md` directly (no `CLAUDE.md` needed).
 3. Ask it the first question in `evals/questions.json`. A good answer cites
    `wiki/resources/pricing-arguments.md` and
    `sources/2026-10-09-pricing-email.md`.
